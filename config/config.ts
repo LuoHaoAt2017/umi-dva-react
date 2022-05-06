@@ -8,12 +8,8 @@ export default defineConfig({
   fastRefresh: {},
   mock: {},
   routes: routes,
-  dva: {
-    immer: true,
-    hmr: false,
-  },
   history: {
-    type: 'hash',
+    type: 'browser',
   },
   alias: {},
 });
