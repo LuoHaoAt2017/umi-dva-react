@@ -15,7 +15,7 @@ export default [
       },
       {
         path: '/',
-        redirect: '/home',
+        redirect: '/about',
       },
     ],
   },

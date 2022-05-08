@@ -7,6 +7,7 @@
     "importHelpers": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
+    "noImplicitAny": false,
     "sourceMap": true,
     "baseUrl": "./",
     "strict": true,
@@ -19,13 +20,14 @@
   "include": [
     "mock/**/*",
     "src/**/*",
+    // "libs/**/*",
     "config/**/*",
     ".umirc.ts",
     "typings.d.ts"
   ],
   "exclude": [
     "node_modules",
-    "lib",
+    // "lib",
     "es",
     "dist",
     "typings",
