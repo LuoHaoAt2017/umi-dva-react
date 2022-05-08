@@ -4,7 +4,7 @@
   "main": "index.js",
   "repository": "git@github.com:LuoHaoAt2017/umi-dva-react.git",
   "author": "UNITED-IMAGING\\hao.luo01 <hao.luo01@united-imaging.com>",
-  "license": "MIT",
+  "license": "MIT",                                                         
   "private": true,
   "scripts": {
     "start": "umi dev",
@@ -28,8 +28,6 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-layout": "^6.5.0",
-    "antd": "^4.20.2",
-    "moment": "^2.29.3",
     "react": "17.x",
     "react-dom": "17.x",
     "umi": "^3.5.23",
