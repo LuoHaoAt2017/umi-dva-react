@@ -8,7 +8,6 @@ export default defineConfig({
     type: 'none',
   },
   fastRefresh: {},
-  mock: {},
   routes: routes,
   history: {
     type: 'browser',
