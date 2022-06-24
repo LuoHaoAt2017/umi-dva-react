@@ -6,9 +6,9 @@ export default defineConfig({
   fastRefresh: {},
   routes: routes,
   history: {
-    type: "browser"
+    type: 'browser',
   },
   devServer: {
-    port: 9000
-  }
+    port: 9000,
+  },
 });

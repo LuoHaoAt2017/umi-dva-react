@@ -1,4 +1,4 @@
-import { GetMenus } from "@/apis/global";
+import { GetMenus } from '@/apis/global';
 
 export const dva = {
   config: {
@@ -12,6 +12,6 @@ export const dva = {
 export async function getInitialState() {
   const resp = await GetMenus();
   return {
-    menus: resp.data
+    menus: resp.data,
   };
 }

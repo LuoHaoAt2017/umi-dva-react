@@ -5,28 +5,28 @@ export default [
     routes: [
       {
         path: '/home',
-        component: '@/pages/Home/index'
+        component: '@/pages/Home/index',
       },
       {
         path: '/about',
-        component: '@/pages/About/index'
+        component: '@/pages/About/index',
       },
       {
         path: '/:province',
-        component: '@/components/Entry/index'
+        component: '@/components/Entry/index',
       },
       {
         path: '/:province/:city',
-        component: '@/components/Entry/index'
+        component: '@/components/Entry/index',
       },
       {
         path: '/:province/:city/:county',
-        component: '@/components/Entry/index'
+        component: '@/components/Entry/index',
       },
       {
         path: '/',
-        redirect: '/about'
+        redirect: '/about',
       },
-    ]
+    ],
   },
 ];

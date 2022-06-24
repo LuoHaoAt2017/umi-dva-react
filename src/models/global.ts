@@ -1,18 +1,17 @@
-
 const GlobalModel = {
   namespace: 'GlobalModel',
   state: {
-    menus: []
+    menus: [],
   },
   reducers: {
     SetMenus(state, payload) {
       return {
         ...state,
-        menus: payload
-      }
-    }
+        menus: payload,
+      };
+    },
   },
-  effects: {}
-}
+  effects: {},
+};
 
 export default GlobalModel;
