@@ -1,4 +1,4 @@
-import { GetMenus } from '@/apis/global';
+import { GetMenus } from '@/services/global';
 
 export const dva = {
   config: {
