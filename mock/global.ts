@@ -13,7 +13,7 @@ export default {
   '/api/depts': (req, res) => {
     const query = req.query.query;
     let list = Mock.mock({
-      'list|10000': [
+      'list|1000': [
         {
           uuid: '@uuid',
           name: '@title',
@@ -21,55 +21,24 @@ export default {
       ],
     }).list;
     if (!!query) {
-      list.filter((x) => x.name.includes(query));
+      list = list.filter((x) => x.name.includes(query));
     }
-    res.send({
-      data: list,
-      req: req,
-      successful: true,
-    });
+    setTimeout(function () {
+      res.send({
+        data: list,
+        successful: true,
+      });
+    }, 500);
   },
   '/api/users': (req, res) => {
     res.send({
-      data: [
-        {
-          pageCode: 'data-center',
-          pageName: 'DataCenter',
-          parent: '',
-        },
-        {
-          pageCode: 'config-center',
-          pageName: 'ConfigCenter',
-          parent: '',
-        },
-        {
-          pageCode: 'integrated',
-          pageName: 'Integrated',
-          parent: '',
-        },
-      ],
+      data: [],
       successful: true,
     });
   },
   '/api/roles': (req, res) => {
     res.send({
-      data: [
-        {
-          pageCode: 'data-center',
-          pageName: 'DataCenter',
-          parent: '',
-        },
-        {
-          pageCode: 'config-center',
-          pageName: 'ConfigCenter',
-          parent: '',
-        },
-        {
-          pageCode: 'integrated',
-          pageName: 'Integrated',
-          parent: '',
-        },
-      ],
+      data: [],
       successful: true,
     });
   },

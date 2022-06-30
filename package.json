@@ -2,8 +2,6 @@
   "name": "umi-dva-react",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:LuoHaoAt2017/umi-dva-react.git",
-  "author": "UNITED-IMAGING\\hao.luo01 <hao.luo01@united-imaging.com>",
   "license": "MIT",
   "private": true,
   "scripts": {

@@ -60,7 +60,7 @@ export default [
       },
       {
         path: '/',
-        redirect: '/about',
+        redirect: '/Greyjoy',
       },
     ],
   },

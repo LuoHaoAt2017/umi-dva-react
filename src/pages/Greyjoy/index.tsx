@@ -1,14 +1,19 @@
 import { useRequest } from 'ahooks';
-import { message, Table, Input, Button, Space } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import { message, Table, Input, Button, Spin } from 'antd';
+import {
+  SearchOutlined,
+  ClearOutlined,
+  RollbackOutlined,
+  ReloadOutlined,
+} from '@ant-design/icons';
 import { GetDepts } from '@/services/global';
 
 import styles from './index.less';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Greyjoy() {
   const [data, setData] = useState<any[]>([]);
-  const { loading, run } = useRequest(
+  const { loading, run, refresh, cancel } = useRequest(
     (query: string) => {
       return GetDepts(query)
         .then(function (res) {
@@ -31,12 +36,16 @@ export default function Greyjoy() {
     },
     {
       manual: true, // 不会默认执行，需要通过 run 或者 runAsync 来触发执行
+      defaultParams: [''], // options.manual = false。
+      loadingDelay: 300, // 可以延迟 loading 变成 true 的时间
+      onBefore: () => {},
       onSuccess: (res) => {
         setData(res);
       },
       onError: () => {
         setData([]);
       },
+      onFinally: () => {},
     },
   );
 
@@ -55,24 +64,38 @@ export default function Greyjoy() {
     },
   ];
 
+  useEffect(() => {
+    run('');
+  }, []);
+
   return (
-    <div>
+    <>
       <h1 className={styles.title}>强取胜于苦耕</h1>
       <Input
         addonBefore={<SearchOutlined />}
-        addonAfter={
+        suffix={
           <Button.Group>
-            <Space>
-              <Button>搜索</Button>
-              <Button>清空</Button>
-            </Space>
+            <Button icon={<SearchOutlined />} onClick={refresh}>
+              搜索
+            </Button>
+            <Button icon={<ReloadOutlined />} onClick={() => run('')}>
+              刷新
+            </Button>
+            <Button icon={<ClearOutlined />}>清空</Button>
+            <Button icon={<RollbackOutlined onClick={cancel} />}>取消</Button>
           </Button.Group>
         }
         onPressEnter={(evt: any) => {
           run(evt.target.value);
         }}
       />
-      <Table columns={cols} dataSource={data} loading={loading} />
-    </div>
+      <Table
+        columns={cols}
+        dataSource={data}
+        loading={loading}
+        size="middle"
+        bordered
+      />
+    </>
   );
 }
