@@ -3,7 +3,7 @@ import { Row, Col, message, Skeleton, Tree, Tooltip, Select } from 'antd';
 import { request } from 'umi';
 import { v4 as uuidv4 } from 'uuid';
 import { useRequest } from 'ahooks';
-import { XMLBuilder, XMLParser, XMLValidator } from 'fast-xml-parser';
+import { XMLParser, XMLValidator } from 'fast-xml-parser';
 import { SwapOutlined } from '@ant-design/icons';
 
 import styles from './index.less';

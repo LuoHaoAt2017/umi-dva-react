@@ -1,7 +1,7 @@
-import { extend } from "umi-request";
+import { extend } from 'umi-request';
 
 const request = extend({
-  timeout: 1000
+  timeout: 1000,
 });
 
 request.interceptors.request.use((url, options) => {
