@@ -12,18 +12,6 @@ export default [
         component: '@/pages/About/index',
       },
       {
-        path: '/:province',
-        component: '@/components/Entry/index',
-      },
-      {
-        path: '/:province/:city',
-        component: '@/components/Entry/index',
-      },
-      {
-        path: '/:province/:city/:county',
-        component: '@/components/Entry/index',
-      },
-      {
         path: '/',
         redirect: '/about',
       },
