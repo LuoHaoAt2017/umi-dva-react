@@ -1,5 +1,5 @@
-import { useRequest } from 'ahooks';
-import { message, Table, Input, Button, Spin } from 'antd';
+import { useRequest, useToggle } from 'ahooks';
+import { message, Table, Input, Button, Select } from 'antd';
 import {
   SearchOutlined,
   ClearOutlined,
@@ -11,8 +11,24 @@ import { GetDepts } from '@/services/global';
 import styles from './index.less';
 import { useEffect, useState } from 'react';
 
+const options = [
+  {
+    label: '冬瓜',
+    value: '0001',
+  },
+  {
+    label: '西瓜',
+    value: '0002',
+  },
+  {
+    label: '南瓜',
+    value: '0003',
+  },
+];
+
 export default function Greyjoy() {
   const [data, setData] = useState<any[]>([]);
+  const [option, setOpts] = useState<string>('');
   const { loading, run, refresh, cancel } = useRequest(
     (query: string) => {
       return GetDepts(query)
@@ -35,9 +51,16 @@ export default function Greyjoy() {
         });
     },
     {
+      // ready: true, // manual=true 手动请求模式时，只要 ready=false，则通过 run/runAsync 触发的请求都不会执行。
       manual: true, // 不会默认执行，需要通过 run 或者 runAsync 来触发执行
-      defaultParams: [''], // options.manual = false。
-      loadingDelay: 300, // 可以延迟 loading 变成 true 的时间
+      // defaultParams: [''], // options.manual = false。
+      // loadingDelay: 300, // 可以延迟 loading 变成 true 的时间
+      // pollingInterval: 6000,
+      // pollingErrorRetryCount: 3,
+      // pollingWhenHidden: false,
+      // refreshDeps: [option],
+      // refreshOnWindowFocus: true,
+      retryCount: 3, // 在失败后会进行重试，指定错误重试次数
       onBefore: () => {},
       onSuccess: (res) => {
         setData(res);
@@ -65,14 +88,26 @@ export default function Greyjoy() {
   ];
 
   useEffect(() => {
-    run('');
+    refresh();
   }, []);
 
   return (
     <>
       <h1 className={styles.title}>强取胜于苦耕</h1>
       <Input
-        addonBefore={<SearchOutlined />}
+        addonBefore={
+          <Select
+            options={options}
+            value={option}
+            placeholder="请选择适用范围"
+            style={{
+              width: 150,
+            }}
+            onChange={(val) => {
+              setOpts(val);
+            }}
+          />
+        }
         suffix={
           <Button.Group>
             <Button icon={<SearchOutlined />} onClick={refresh}>

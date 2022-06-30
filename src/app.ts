@@ -10,8 +10,7 @@ export const dva = {
 };
 
 export async function getInitialState() {
-  const resp = await GetMenus();
   return {
-    menus: resp.data,
+    menus: [],
   };
 }
